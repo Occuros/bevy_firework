@@ -10,13 +10,30 @@ keywords = ["bevy", "gamedev", "particles", "graphics"]
 resolver = "2"
 
 [dependencies]
-bevy = "0.15"
-bytemuck = "1.14.3"
-rand = "0.8.5"
+bevy = {version="0.15", default-features = false, features = [
+    "bevy_asset",
+    "bevy_color",
+    "bevy_core_pipeline",
+    "bevy_gizmos",
+    "bevy_pbr",
+    "bevy_render",
+    "bevy_sprite",
+    "png",
+] }
+bytemuck = "1.21.0"
+rand = "0.9.0"
 bevy_utilitarian = "0.6"
 serde = { version = "1.0", features = ["derive"] }
 avian3d = { version = "0.2", features = ["serialize"], optional = true }
 
+[dev-dependencies]
+bevy = {version="0.15", default-features = false, features = [
+    "bevy_window",
+    "bevy_text",
+    "bevy_ui",
+    "bevy_winit",
+    "tonemapping_luts",
+] }
 [features]
 default = ["physics_avian"]
 physics_avian = ["dep:avian3d"]
